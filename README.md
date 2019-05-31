@@ -40,3 +40,4 @@ Receive email with shopping list after adding missing ingredients to profile.
 Contributors:
 
 Myriam Boran
+Stephen Gibson
