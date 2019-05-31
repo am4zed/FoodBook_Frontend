@@ -1,7 +1,5 @@
 # FoodBook_Frontend
 
-Recipe Finder
-====== 
 
 ### MVP
 
