@@ -8,7 +8,7 @@ Recipe Finder
 
 ---
 
-* Create a recipe finder where users can:
+#### Create a recipe finder where users can:
 
 
 - Search for recipes filtering by ingredients
@@ -25,7 +25,7 @@ Recipe Finder
 
 ---
 
-* User can:
+#### User can:
 
 - Search a wider library of recipes from an API
 
@@ -39,7 +39,7 @@ Recipe Finder
 
 - Serves
 
-* Login using Auth0
+#### Login using Auth0
 
 - View recipe reviews and add own recipe reviews
 
