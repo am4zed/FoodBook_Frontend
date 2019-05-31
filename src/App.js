@@ -1,11 +1,10 @@
 import React from 'react';
+import MainContainer from './containers/MainContainer';
 import './App.css';
 
 function App() {
   return (
-   <div>
-     <h3>I'm the FoodBook app!</h3>
-   </div>
+  <MainContainer />
   );
 }
 
