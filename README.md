@@ -2,9 +2,10 @@
 
 
 ### MVP
-
-
 ---
+
+
+
 
 #### Create a recipe finder where users can:
 
@@ -20,8 +21,9 @@
 
 
 ### Extensions
-
 ---
+
+
 
 #### User can:
 
