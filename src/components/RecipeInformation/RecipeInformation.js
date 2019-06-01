@@ -4,23 +4,19 @@ import Calories from '../Calories/Calories';
 import PrepTime from '../PrepTime/PrepTime';
 import RecipeHealthLabel from '../RecipeLabel/RecipeHealthLabel';
 
-class RecipeInformation (props) => {
-  super(props);
-  this.state = {
-    recipeImageUrl: null,
-    calories: null,
-    totalTime: null,
-    healthLabel: null
-  }
-};
+const RecipeInformation = (props) => {
+  const healthLabels = props.currentRecipe.healthLabels.map((label) => {
+    return <RecipeHealthLabel healthLabel={label} />;
+  })
 
-return (
-  <div className="recipe-information">
-    <RecipeImage />
-    <Calories />
-    <PrepTime />
-    <RecipeHealthLabel />
-  </div>
-);
+  return (
+    <div className="recipe-information">
+      <RecipeImage />
+      <Calories />
+      <PrepTime />
+      <ul>{healthLabels}</ul>
+    </div>
+  );
+}
 
 export default RecipeInformation;
