@@ -1,15 +1,13 @@
-import React from 'react';
-import './recipe.css';
-import Ingredient from '../Ingredient';
-import Method from '../Method';
-import RecipeLabel from '../../RecipeLabel/RecipeLabel.js';
+import React from "react";
+import "./recipe.css";
+import Ingredient from "../Ingredient/Ingredient";
+import Method from "../Method/Method";
+import RecipeLabel from "../RecipeLabel/RecipeLabel";
 
-const Recipe = (props) => {
-  const ingredientsList = props.currentRecipe.ingredientLines.map( line => {
-    return(
-      <Ingredient line={line} />
-    )
-  })
+const Recipe = props => {
+  const ingredientsList = props.currentRecipe.ingredientLines.map(line => {
+    return <Ingredient line={line} />;
+  });
   return (
     <>
       <RecipeLabel />
@@ -19,6 +17,5 @@ const Recipe = (props) => {
       <Method />
     </>
   );
-
 };
 export default Recipe;
