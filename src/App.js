@@ -43,26 +43,27 @@ class App extends React.Component {
       if (err.error !== 'login_required') console.log(err.error);
 
     }
-
-    render() {
-      const authenticated = this.props.auth.isAuthenticated();
-      return (
-        <div>
-          <Route path="/callback" render={() => <Callback auth={this.props.auth} />} />
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Homepage
-                authenticated={authenticated}
-                auth={this.props.auth}
-                history={this.props.history}
-              />
-            )}
-          />
-        </div>
-      );
-    }
   }
 
-  export default withRouter(App);
+  render() {
+    const authenticated = this.props.auth.isAuthenticated();
+    return (
+      <div>
+        <Route path="/callback" render={() => <Callback auth={this.props.auth} />} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Homepage
+              authenticated={authenticated}
+              auth={this.props.auth}
+              history={this.props.history}
+            />
+          )}
+        />
+      </div>
+    );
+  }
+}
+
+export default withRouter(App);
