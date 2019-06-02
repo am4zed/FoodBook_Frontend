@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { withRouter, Route } from "react-router-dom"
 import Callback from "./components/Callback/Callback"
-
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute"
 
 const Homepage = props => {
   const { authenticated } = props;
@@ -53,12 +53,13 @@ class App extends React.Component {
 
   render() {
     const authenticated = this.props.auth.isAuthenticated();
+    const { validatingSession } = this.state;
     return (
       <div>
         <Route path="/callback" render={() => <Callback auth={this.props.auth} />} />
-        <Route
-          exact
+        <ProtectedRoute
           path="/"
+          validatingSession={validatingSession}
           render={() => (
             <Homepage
               authenticated={authenticated}
