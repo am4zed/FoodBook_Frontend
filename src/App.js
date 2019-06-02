@@ -2,34 +2,6 @@ import React from 'react';
 import './App.css';
 import { withRouter, Route } from "react-router-dom"
 import Callback from "./components/Callback/Callback"
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"
-
-const Homepage = props => {
-  const { authenticated } = props;
-
-  const logout = () => {
-    props.auth.logout();
-    props.history.push("/");
-  };
-
-  if (authenticated) {
-    const { name } = props.auth.getProfile();
-
-    return (
-      <div>
-        <h1>Hi there, {name}</h1>
-        <button onClick={logout}>Logout</button>
-      </div>
-    );
-  }
-
-  return (
-    <div>
-      <h1>Please login to continue</h1>
-      <button onClick={props.auth.login}>Login</button>
-    </div>
-  );
-};
 
 class App extends React.Component {
   constructor(props) {
@@ -52,22 +24,10 @@ class App extends React.Component {
   }
 
   render() {
-    const authenticated = this.props.auth.isAuthenticated();
-    const { validatingSession } = this.state;
     return (
       <div>
         <Route path="/callback" render={() => <Callback auth={this.props.auth} />} />
-        <ProtectedRoute
-          path="/"
-          validatingSession={validatingSession}
-          render={() => (
-            <Homepage
-              authenticated={authenticated}
-              auth={this.props.auth}
-              history={this.props.history}
-            />
-          )}
-        />
+        <h1>Hello from Foodbook!</h1>
       </div>
     );
   }
