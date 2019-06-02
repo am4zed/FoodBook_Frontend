@@ -14,7 +14,6 @@ const Homepage = props => {
 
   if (authenticated) {
     const { name } = props.auth.getProfile();
-    console.log(props.auth.getProfile());
 
     return (
       <div>
@@ -33,16 +32,23 @@ const Homepage = props => {
 };
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      validatingSession: true
+    }
+  }
 
   async componentDidMount() {
-    if (this.props.location.pathname === "/callback") return;
+    if (this.props.location.pathname === "/callback")
+      this.setState({ validatingSession: false })
     try {
       await this.props.auth.silentAuth();
       this.forceUpdate(); // Make sure to force a rerender, incase you're wondering what this does
     } catch (err) {
       if (err.error !== 'login_required') console.log(err.error);
-
     }
+    this.setState({ validatingSession: false })
   }
 
   render() {
