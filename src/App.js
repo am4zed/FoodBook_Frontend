@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { withRouter, Route } from "react-router-dom"
 import Callback from "./components/Callback/Callback"
-import auth from "./Auth/Auth"
 
 
 const Homepage = props => {
@@ -36,28 +35,34 @@ const Homepage = props => {
 class App extends React.Component {
 
   async componentDidMount() {
+    if (this.props.location.pathname === "/callback") return;
+    try {
+      await this.props.auth.silentAuth();
+      this.forceUpdate(); // Make sure to force a rerender, incase you're wondering what this does
+    } catch (err) {
+      if (err.error !== 'login_required') console.log(err.error);
 
+    }
+
+    render() {
+      const authenticated = this.props.auth.isAuthenticated();
+      return (
+        <div>
+          <Route path="/callback" render={() => <Callback auth={this.props.auth} />} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Homepage
+                authenticated={authenticated}
+                auth={this.props.auth}
+                history={this.props.history}
+              />
+            )}
+          />
+        </div>
+      );
+    }
   }
 
-  render() {
-    const authenticated = props.auth.isAuthenticated();
-    return (
-      <div>
-        <Route path="/callback" render={() => <Callback auth={props.auth} />} />
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <Homepage
-              authenticated={authenticated}
-              auth={props.auth}
-              history={props.history}
-            />
-          )}
-        />
-      </div>
-    );
-  }
-}
-
-export default withRouter(App);
+  export default withRouter(App);
