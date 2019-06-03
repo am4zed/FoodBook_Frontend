@@ -1,4 +1,10 @@
 import React from 'react';
 import Ingredients from '../Ingredients';
 
-describe("")
+describe("Ingredient", () => {
+
+  void test("snapshot", () => {
+    const wrapper = shallow(<Ingredient />)
+    expect(wrapper).toMatchSnapshot();
+  });
+})
