@@ -3,6 +3,8 @@ import MainContainer from "./containers/MainContainer";
 import "./App.css";
 import { withRouter, Route } from "react-router-dom";
 import Callback from "./components/Callback/Callback";
+import Header from "./components/Header/Header"
+import Homepage from "./components/Homepage/Homepage"
 
 class App extends React.Component {
   constructor(props) {
@@ -27,11 +29,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Header />
         <Route
           path="/callback"
           render={() => <Callback auth={this.props.auth} />}
         />
-        <h1>Hello from Foodbook!</h1>
+        <Route
+          exact path="/"
+          component={Homepage}
+        />
+        <Route
+          path="/recipe"
+        />
       </div>
     );
   }
