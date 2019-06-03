@@ -1,5 +1,5 @@
 import React from 'react';
-import Ingredients from '../Ingredients';
+import Ingredient from '../Ingredient';
 
 describe("Ingredient", () => {
 
