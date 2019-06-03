@@ -6,29 +6,34 @@ class Searchbar extends React.Component {
         this.state = {
             value: null
         }
-
     }
 
-    handleIngredientChange(evt) {
+    onSubmit = (evt) => {
+        evt.preventDefault()
+        this.props.onSubmit(this.state.value);
+
+    };
+
+    onChange = (evt) => {
         this.setState({
             value: evt.target.value
         });
-    }
+    };
 
     render() {
         return (
             //Searchbar
-            <form>
+            <form className="recipe-search" onSubmit={(evt) => this.onSubmit(evt)}>
                 <h3>Search for recipes that include your ingredient.</h3>
                 <input
-                    id="inputIngredient"
-                    name="inputIngredient"
+                    id="input-ingredient"
+                    name="input-ingredient"
                     type="text"
-                    onChange={this.handleIngredientChange}
-                    value={this.state.value}
+                    onChange={(evt) => this.onChange(evt)}
+                    value={this.state.ingredient}
                 />
 
-                <input type="submit" value="Search" />
+                <button type="submit" value="Search" />
             </form>
         )
     }
