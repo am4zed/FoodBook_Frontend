@@ -12,7 +12,7 @@ exports[`ProtectedRoute snapshot 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "r8y4l7",
+            "key": "rt278c",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -26,7 +26,7 @@ exports[`ProtectedRoute snapshot 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "r8y4l7",
+          "key": "rt278c",
           "pathname": "/",
           "search": "",
           "state": undefined,

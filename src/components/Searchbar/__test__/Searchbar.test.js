@@ -14,12 +14,12 @@ describe("searchbar", () => {
         // TODO to be done last
     });
 
-    xit("has state for current value of the input", () => {
+    it("has state for current value of the input", () => {
         const wrapper = shallow(<Searchbar />);
         expect(wrapper.state().value).toBeDefined();
     });
 
-    xit("has onSubmit prop", () => {
+    it("has onSubmit prop", () => {
         const wrapper = shallow(<Searchbar onSubmit={props.onSubmit} />);
         const instance = wrapper.instance();
         expect(instance.props.onSubmit).toBeDefined()
