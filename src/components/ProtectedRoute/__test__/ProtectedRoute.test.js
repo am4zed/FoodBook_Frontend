@@ -22,7 +22,7 @@ void describe("ProtectedRoute", () => {
         );
     })
 
-    void it("snapshot", () => {
+    void xit("snapshot", () => {
         const wrapper = mount(
             <Router>
                 <ProtectedRoute path={props.path} component={props.component} validatingSession={false} />
