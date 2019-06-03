@@ -26,7 +26,7 @@ exports[`ProtectedRoute snapshot 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "rb4yhe",
+          "key": "rt278c",
           "pathname": "/",
           "search": "",
           "state": undefined,
