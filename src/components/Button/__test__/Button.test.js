@@ -8,6 +8,11 @@ describe("Button", () => {
         shallow(<Button />)
     });
 
+    void test("snapshot", () => {
+        const wrapper = shallow(<Button />)
+        expect(wrapper).toMatchSnapshot();
+    })
+
     void it("has a button element", () => {
         const wrapper = shallow(<Button />);
         expect(wrapper.exists("button")).toBeTruthy();
