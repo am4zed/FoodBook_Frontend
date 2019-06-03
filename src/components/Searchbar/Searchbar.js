@@ -4,8 +4,16 @@ class Searchbar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      ingredient: null;
+      ingredient: null
     }
+
+    handleSubmit(evt){
+      evt.preventDefault()
+      const ingredient = this.state.ingredient;
+      this.setState({
+        ingredient: ingredient
+      });
+    };
 
     handleIngredientChange(evt) {
       this.setState({
@@ -18,11 +26,11 @@ class Searchbar extends React.Component {
     render() {
         return (
           //Searchbar
-          <form>
+          <form className="recipe-search" onSubmit={this.handleSubmit}>
           <h3>Search for recipes that include your ingredient.</h3>
             <input
-              id="inputIngredient"
-              name="inputIngredient"
+              id="input-ingredient"
+              name="input-ingredient"
               type="text"
               onChange={this.handleIngredientChange}
               value={this.state.ingredient}
