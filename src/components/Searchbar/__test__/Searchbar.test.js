@@ -60,7 +60,7 @@ describe("searchbar", () => {
         expect(spy.calledOnce).toBeTruthy();
     });
 
-    it("calls onSubmit prop when submitted", () => {
+    xit("calls onSubmit prop when submitted", () => {
         const { onSubmit } = props;
         const wrapper = shallow(<Searchbar onSubmit={onSubmit} />);
         const instance = wrapper.instance();
