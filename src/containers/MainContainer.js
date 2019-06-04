@@ -45,7 +45,7 @@ class MainContainer extends React.Component {
   }
 
   handleFavouriteClick(recipe) {
-    console.log("hello");
+    console.log(recipe.label);
   }
 
   async componentDidMount() {

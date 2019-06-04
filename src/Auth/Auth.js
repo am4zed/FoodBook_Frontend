@@ -30,7 +30,7 @@ class Auth {
         this.expiresAt = authResult.idTokenPayload.exp * 1000;
         resolve();
       });
-    })
+    });
   }
 
   silentAuth() {
