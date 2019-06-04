@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import "./searchbar.css";
 
 class Searchbar extends React.Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Searchbar extends React.Component {
                     value={this.state.ingredient}
                 />
 
-                <button type="submit" value="Search" />
+                <button type="submit" value="Search">Search</button>
             </form>
         )
     }

@@ -1,0 +1,23 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.my_recipes_button {
+    background-color: #ff665b; /* coral */
+    border: none;
+    border-radius: 4px;
+    color: #FFFFFF;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 3px 3px 3px;
+}
+
+.my_recipes_button:hover {
+    background-color: #f54235; /* dark coral */
+  }
