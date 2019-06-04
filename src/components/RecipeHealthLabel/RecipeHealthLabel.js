@@ -1,11 +1,8 @@
 import React from 'react';
 
-const RecipeLabel (props) => {
-  <>
-    <ul>
-      <li>{props.healthLabel}</li>
-    </ul>
-  </>
-}
+const RecipeLabel (props) => (
+  <li>{props.healthLabel}</li>
+)
+
 
 export default RecipeLabel;
