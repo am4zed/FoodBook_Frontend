@@ -2,7 +2,7 @@ import React from "react";
 
 const Calories = props => (
   <>
-    <h4>Calories : {props.Calories}</h4>
+    <h4>Calories : {props.calories}</h4>
   </>
 );
 export default Calories;
