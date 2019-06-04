@@ -1,4 +1,5 @@
 import React from "react";
+import RecipeBox from "../components/RecipeBox/RecipeBox";
 import Callback from "../components/Callback/Callback";
 import Header from "../components/Header/Header";
 import Discover from "../components/Discover/Discover";
@@ -19,6 +20,7 @@ class MainContainer extends React.Component {
       result: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onRecipeCardClick = this.onRecipeCardClick.bind(this);
   }
 
   handleSubmit(query) {
@@ -36,6 +38,11 @@ class MainContainer extends React.Component {
       .catch(err => console.log(err));
   }
 
+  onRecipeCardClick(recipe) {
+    this.setState({ currentRecipe: recipe });
+    this.props.history.push(`/recipe/${recipe.uri}`);
+  }
+
   async componentDidMount() {
     if (this.props.location.pathname === "/callback")
       this.setState({ validatingSession: false });
@@ -49,7 +56,8 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    const { result } = this.state;
+    const { result, currentRecipe } = this.state;
+
     return (
       <>
         <Header />
@@ -61,12 +69,16 @@ class MainContainer extends React.Component {
           exact
           path="/"
           render={() => (
-            <Discover onSubmit={this.handleSubmit} hits={result.hits} />
+            <Discover
+              onSubmit={this.handleSubmit}
+              hits={result.hits}
+              onClick={this.onRecipeCardClick}
+            />
           )}
         />
         <Route
           path="/recipe/:id"
-          render={() => <div>Render recipe detail here</div>}
+          render={() => <RecipeBox currentRecipe={currentRecipe} />}
         />
       </>
     );

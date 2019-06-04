@@ -11,7 +11,7 @@ const Recipe = props => {
   return (
     <>
       <RecipeLabel />
-      <h2>Ingredients :</h2>
+      <h2>Ingredients : </h2>
       <ul>{ingredientsList}</ul>
       <h2>Methods :</h2>
       <Method />
