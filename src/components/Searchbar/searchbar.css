@@ -4,9 +4,12 @@
   text-align: center;
 }
 
+.recipe-search h3{
+  font-size: 30px;
+}
+
 #input-ingredient{
   border-bottom: 2px solid #FF665A;
-  width: 300px;
   border-top: none;
   border-right: none;
   border-left: none;
@@ -17,4 +20,16 @@
 
 #input-ingredient:focus{
 outline-style: none;
+}
+.search-button{
+  background-color: #FF665A; /* coral */
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px;
 }
