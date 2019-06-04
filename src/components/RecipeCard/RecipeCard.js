@@ -1,5 +1,5 @@
 import React from "react";
-import "./recipeCard.css";
+// import "./recipeCard.css";
 import RecipeImage from "../RecipeImage/RecipeImage";
 import RecipeLabel from "../RecipeLabel/RecipeLabel";
 

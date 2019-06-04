@@ -16,7 +16,7 @@ class MainContainer extends React.Component {
     this.state = {
       validatingSession: true,
       currentRecipe: null,
-      recipes: []
+      result: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -32,7 +32,7 @@ class MainContainer extends React.Component {
       .then(res => {
         return res.json();
       })
-      .then(res => this.setState({ recipes: res }))
+      .then(res => this.setState({ result: res }))
       .catch(err => console.log(err));
   }
 
@@ -49,7 +49,7 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    const { recipes } = this.state;
+    const { result } = this.state;
     return (
       <>
         <Header />
@@ -61,7 +61,7 @@ class MainContainer extends React.Component {
           exact
           path="/"
           render={() => (
-            <Discover onSubmit={this.handleSubmit} recipes={recipes} />
+            <Discover onSubmit={this.handleSubmit} hits={result.hits} />
           )}
         />
         <Route
