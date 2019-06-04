@@ -47,7 +47,7 @@ class MainContainer extends React.Component {
     render() {
         const { recipes } = this.state;
         return (
-            <Router>
+            <>
                 <Header />
                 <Route
                     path="/callback"
@@ -61,7 +61,7 @@ class MainContainer extends React.Component {
                     path="/recipe/:id"
                     render={() => <div>Render recipe detail here</div>}
                 />
-            </Router>
+            </>
         )
     }
 }
