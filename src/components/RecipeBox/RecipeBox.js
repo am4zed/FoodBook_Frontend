@@ -4,10 +4,15 @@ import Recipe from "../Recipe/Recipe";
 import RecipeInformation from "../RecipeInformation/RecipeInformation";
 
 const RecipeBox = props => {
-  <div className="recipe-box">
-    <Recipe className="recipe" />
-    <RecipeInformation className="recipe-info" />
-  </div>;
+  return (
+    <div className="recipe-box">
+      <Recipe className="recipe" currentRecipe={props.currentRecipe} />
+      <RecipeInformation
+        className="recipe-info"
+        currentRecipe={props.currentRecipe}
+      />
+    </div>
+  );
 };
 
 export default RecipeBox;

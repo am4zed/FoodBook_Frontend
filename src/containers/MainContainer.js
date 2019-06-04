@@ -1,4 +1,5 @@
 import React from "react";
+import RecipeBox from "../components/RecipeBox/RecipeBox";
 import Callback from "../components/Callback/Callback";
 import Header from "../components/Header/Header";
 import Discover from "../components/Discover/Discover";
@@ -55,7 +56,8 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    const { result } = this.state;
+    const { result, currentRecipe } = this.state;
+
     return (
       <>
         <Header />
@@ -74,7 +76,10 @@ class MainContainer extends React.Component {
             />
           )}
         />
-        <Route path="/recipe/:id" render={() => <div />} />
+        <Route
+          path="/recipe/:id"
+          render={() => <RecipeBox currentRecipe={currentRecipe} />}
+        />
       </>
     );
   }
