@@ -1,8 +1,9 @@
 import React from 'react';
 import Callback from "../components/Callback/Callback";
 import Header from "../components/Header/Header"
-import Homepage from "../components/Homepage/Homepage"
+import Discover from "../components/Discover/Discover"
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import axios from "axios"
 
 
 class MainContainer extends React.Component {
@@ -13,6 +14,22 @@ class MainContainer extends React.Component {
             currentRecipe: null,
             recipes: []
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleSubmit(query) {
+        fetch(`http://localhost:8080/api/search/${query}`,
+            {
+                mode: 'cors', // no-cors, cors, *same-origin
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'http://localhost:3000'
+                }
+            })
+            .then((res) => { return res.json() })
+            .then((res) => this.setState({ recipes: res }))
+            .catch((err) => console.log(err))
+
     }
 
     async componentDidMount() {
@@ -28,6 +45,7 @@ class MainContainer extends React.Component {
     }
 
     render() {
+        const { recipes } = this.state;
         return (
             <Router>
                 <Header />
@@ -37,10 +55,11 @@ class MainContainer extends React.Component {
                 />
                 <Route
                     exact path="/"
-                    component={Homepage}
+                    render={() => <Discover onSubmit={this.handleSubmit} recipes={recipes} />}
                 />
                 <Route
-                    path="/recipe"
+                    path="/recipe/:id"
+                    render={() => <div>Render recipe detail here</div>}
                 />
             </Router>
         )
