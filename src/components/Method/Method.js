@@ -1,11 +1,13 @@
 import React from 'react';
 import './style.css';
 
-const Method = () => {
+const Method = (props) => {
 
   return(
     <>
-      <li>{props.method}</li>
+      <span className="instructions">
+        <a href={props.url}>Instructions</a>
+      </span>
     </>
   )
 };

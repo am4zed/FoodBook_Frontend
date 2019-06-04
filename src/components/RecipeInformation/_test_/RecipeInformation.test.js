@@ -1,7 +1,7 @@
 import React from 'react';
-import RecipeLabel from './RecipeLabel';
+import RecipeInformation from './RecipeInformation';
 
-describe("recipeLabel" => {
+describe("recipeInformation" => {
  xit("Renders without crashing", () => {
    //TODO
  });
