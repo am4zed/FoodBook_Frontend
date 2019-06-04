@@ -1,5 +1,6 @@
 import React from "react";
 import RecipeBox from "../components/RecipeBox/RecipeBox";
+import Button from "../components/Button/Button";
 import Callback from "../components/Callback/Callback";
 import Header from "../components/Header/Header";
 import Discover from "../components/Discover/Discover";
@@ -45,6 +46,7 @@ class MainContainer extends React.Component {
   }
 
   handleFavouriteClick(recipe) {
+    //// TODO: fetch();
     console.log(recipe.label);
   }
 
@@ -62,10 +64,19 @@ class MainContainer extends React.Component {
 
   render() {
     const { result, currentRecipe } = this.state;
+    const isAuthenticated = this.props.auth.isAuthenticated();
+    if (isAuthenticated) {
+      const id = this.props.auth.getProfile().id;
+      console.log(id);
+    }
 
     return (
       <>
         <Header />
+        <Button
+          value={isAuthenticated ? "Logout" : "Login"}
+          onClick={this.props.auth.login}
+        />
         <Route
           path="/callback"
           render={() => <Callback auth={this.props.auth} />}
