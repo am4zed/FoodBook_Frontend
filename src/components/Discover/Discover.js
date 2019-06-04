@@ -4,9 +4,9 @@ import { withRouter } from "react-router-dom"
 
 const Discover = (props) => {
 
-    // const recipes = props.recipes.map(() => {
-    //     return <div>This is a recipe card</div>
-    // })
+    const recipes = props.recipes.map(() => {
+        return <div>This is a recipe card</div>
+    })
 
     return (
         <div>
