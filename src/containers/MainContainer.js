@@ -1,69 +1,76 @@
-import React from 'react';
+import React from "react";
 import Callback from "../components/Callback/Callback";
-import Header from "../components/Header/Header"
-import Discover from "../components/Discover/Discover"
-import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
-import axios from "axios"
-
+import Header from "../components/Header/Header";
+import Discover from "../components/Discover/Discover";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter
+} from "react-router-dom";
+import axios from "axios";
 
 class MainContainer extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            validatingSession: true,
-            currentRecipe: null,
-            recipes: []
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      validatingSession: true,
+      currentRecipe: null,
+      result: []
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    handleSubmit(query) {
-        fetch(`http://localhost:8080/api/search/${query}`,
-            {
-                mode: 'cors', // no-cors, cors, *same-origin
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://localhost:3000'
-                }
-            })
-            .then((res) => { return res.json() })
-            .then((res) => this.setState({ recipes: res }))
-            .catch((err) => console.log(err))
+  handleSubmit(query) {
+    fetch(`http://localhost:8080/api/search/${query}`, {
+      mode: "cors", // no-cors, cors, *same-origin
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000"
+      }
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(res => this.setState({ result: res }))
+      .catch(err => console.log(err));
+  }
 
+  async componentDidMount() {
+    if (this.props.location.pathname === "/callback")
+      this.setState({ validatingSession: false });
+    try {
+      await this.props.auth.silentAuth();
+      this.forceUpdate(); // Make sure to force a rerender, incase you're wondering what this does
+    } catch (err) {
+      if (err.error !== "login_required") console.log(err.error);
     }
+    this.setState({ validatingSession: false });
+  }
 
-    async componentDidMount() {
-        if (this.props.location.pathname === "/callback")
-            this.setState({ validatingSession: false });
-        try {
-            await this.props.auth.silentAuth();
-            this.forceUpdate(); // Make sure to force a rerender, incase you're wondering what this does
-        } catch (err) {
-            if (err.error !== "login_required") console.log(err.error);
-        }
-        this.setState({ validatingSession: false });
-    }
-
-    render() {
-        const { recipes } = this.state;
-        return (
-            <>
-                <Header />
-                <Route
-                    path="/callback"
-                    render={() => <Callback auth={this.props.auth} />}
-                />
-                <Route
-                    exact path="/"
-                    render={() => <Discover onSubmit={this.handleSubmit} recipes={recipes} />}
-                />
-                <Route
-                    path="/recipe/:id"
-                    render={() => <div>Render recipe detail here</div>}
-                />
-            </>
-        )
-    }
+  render() {
+    const { result } = this.state;
+    return (
+      <>
+        <Header />
+        <Route
+          path="/callback"
+          render={() => <Callback auth={this.props.auth} />}
+        />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Discover onSubmit={this.handleSubmit} hits={result.hits} />
+          )}
+        />
+        <Route
+          path="/recipe/:id"
+          render={() => <div>Render recipe detail here</div>}
+        />
+      </>
+    );
+  }
 }
 
 export default withRouter(MainContainer);
