@@ -2,6 +2,7 @@ import React from "react";
 import "./recipeBox.css";
 import Recipe from "../Recipe/Recipe";
 import RecipeInformation from "../RecipeInformation/RecipeInformation";
+import Button from "../Button/Button";
 
 const RecipeBox = props => {
   return (
@@ -11,6 +12,7 @@ const RecipeBox = props => {
         className="recipe-info"
         currentRecipe={props.currentRecipe}
       />
+      <Button className="favourite" />
     </div>
   );
 };
