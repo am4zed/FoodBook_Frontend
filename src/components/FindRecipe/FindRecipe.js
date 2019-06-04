@@ -11,3 +11,5 @@ const FindRecipe = () => {
     </>
   )
 }
+
+export default FindRecipe;
