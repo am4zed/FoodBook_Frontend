@@ -1,14 +1,12 @@
-import React from 'react';
-import './recipe.css';
-import Ingredient from '../Ingredient';
-import Method from '../Method';
+import React from "react";
+import "./recipe.css";
+import Ingredient from "../Ingredient";
+import Method from "../Method";
 
-const Recipe = (props) => {
-  const ingredientsList = props.currentRecipe.ingredientLines.map( line => {
-    return(
-      <Ingredient line={line} />
-    )
-  })
+const Recipe = props => {
+  const ingredientsList = props.currentRecipe.ingredientLines.map(line => {
+    return <Ingredient line={line} />;
+  });
   return (
     <>
       <h1>{props.recipeName}</h1>
@@ -18,6 +16,5 @@ const Recipe = (props) => {
       <Method />
     </>
   );
-
 };
 export default Recipe;
