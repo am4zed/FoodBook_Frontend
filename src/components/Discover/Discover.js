@@ -1,7 +1,21 @@
 import React from 'react';
-import RecipeCard from '../RecipeCard/Recipe'
+import Searchbar from "../Searchbar/Searchbar"
+import { withRouter } from "react-router-dom"
 
+const Discover = (props) => {
 
-// <Card>https://material-ui.com/components/cards/</Card>//Could this be given a className?
+    // const recipes = props.recipes.map(() => {
+    //     return <div>This is a recipe card</div>
+    // })
 
-// //3 columns
+    return (
+        <div>
+            <Searchbar onSubmit={props.onSubmit} />
+            <div className="this-will-be-a-flex-box">
+                {/* {recipes} */}
+            </div>
+        </div>
+    )
+};
+
+export default withRouter(Discover);
