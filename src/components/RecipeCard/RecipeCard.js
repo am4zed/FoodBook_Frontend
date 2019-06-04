@@ -6,6 +6,8 @@ import RecipeLabel from "../RecipeLabel/RecipeLabel";
 const RecipeCard = props => {
   <div className="recipe-card">
     <RecipeImage />
-    <RecipeHealthLabel />
+    <RecipeLabel />
   </div>;
 };
+
+export default RecipeCard;

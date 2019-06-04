@@ -1,8 +1,8 @@
 import React from "react";
 import "./recipe.css";
-import Ingredient from "../Ingredient";
-import Method from "../Method";
-import RecipeLabel from "../../RecipeLabel/RecipeLabel.js";
+import Ingredient from "../Ingredient/Ingredient";
+import Method from "../Method/Method";
+import RecipeLabel from "../RecipeLabel/RecipeLabel";
 
 const Recipe = props => {
   const ingredientsList = props.currentRecipe.ingredientLines.map(line => {

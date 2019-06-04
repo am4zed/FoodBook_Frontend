@@ -1,8 +1,8 @@
-import React from 'react';
-import Calories from './Calories';
+import React from "react";
+import Calories from "../Calories";
 
-describe("Calories" => {
- xit("Renders without crashing", () => {
-   //TODO
- });
-})
+describe("Calories", () => {
+  it("Renders without crashing", () => {
+    const wrapper = shallow(<Calories />);
+  });
+});
