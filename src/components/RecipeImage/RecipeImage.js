@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const RecipeImage = (props) => (
-    <img src={props.recipeImageUrl} className="recipe-image"/>
+const RecipeImage = props => (
+  <img src={props.recipeImageUrl} className="recipe-image" />
 );
 
 export default RecipeImage;
