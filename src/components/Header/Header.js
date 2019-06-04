@@ -1,9 +1,10 @@
 import React from 'react';
+import Logo from '../Logo/Logo.js';
 
 const Header = () => {
   return (
     <>
-      <div className="logo">This is where the logo will go</div>
+      <Logo />
       <button className="my_recipes">My Recipes</button>
     </>
   )};
