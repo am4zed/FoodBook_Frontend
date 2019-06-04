@@ -2,6 +2,7 @@ import React from "react";
 import "./recipe.css";
 import Ingredient from "../Ingredient";
 import Method from "../Method";
+import RecipeLabel from "../../RecipeLabel/RecipeLabel.js";
 
 const Recipe = props => {
   const ingredientsList = props.currentRecipe.ingredientLines.map(line => {
@@ -9,7 +10,7 @@ const Recipe = props => {
   });
   return (
     <>
-      <h1>{props.recipeName}</h1>
+      <RecipeLabel />
       <h2>Ingredients :</h2>
       <ul>{ingredientsList}</ul>
       <h2>Methods :</h2>
