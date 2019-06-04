@@ -7,7 +7,7 @@ const Discover = props => {
   return (
     <div>
       <Searchbar onSubmit={props.onSubmit} />
-      <DiscoveryGrid hits={props.hits} />
+      <DiscoveryGrid hits={props.hits} onClick={props.onClick} />
     </div>
   );
 };
