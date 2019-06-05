@@ -1,12 +1,28 @@
+
+
 .recipe-information {
+  display: grid;
+  grid-template-areas: 
+  "img"
+  "calories"
+  "prepTime"
+  "labels"
+  "fav";
+  grid-auto-columns: auto;
+  grid-auto-rows: auto;
+  grid-gap: 15px;
   padding: 2em;
 }
+
 .labels {
+  grid-area: labels;
   display: flex;
   justify-content: space-evenly;
+  height: auto;
 }
 
 .favourite {
+  grid-area: fav;
   border: 1px solid #FF665A;
   border-radius: 30px;
 }
