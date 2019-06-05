@@ -12,7 +12,7 @@ const RecipeBox = props => {
         className="recipe-info"
         currentRecipe={props.currentRecipe}
       />
-      <Button className="favourite" value={"<3"} onCLick={props.onClick} />
+
     </div>
   );
 };

@@ -3,15 +3,13 @@ import React from "react";
 import RecipeImage from "../RecipeImage/RecipeImage";
 import RecipeLabel from "../RecipeLabel/RecipeLabel";
 import FavouriteButton from "../FavouriteButton/FavouriteButton";
+import './recipeCard.css'
+
 const RecipeCard = props => {
   return (
     <div className="recipe-card" onClick={() => props.onClick(props.recipe)}>
       <RecipeImage recipeImageUrl={props.recipe.image} />
       <RecipeLabel label={props.recipe.label} />
-      <FavouriteButton
-        onFavouriteClick={props.onFavouriteClick}
-        recipe={props.recipe}
-      />
     </div>
   );
 };

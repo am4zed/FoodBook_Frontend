@@ -6,11 +6,12 @@ const FavouriteButton = props => {
     <>
       <Button
         className="favourite"
-        value="<3"
+        value=""
         onClick={() => {
           props.onFavouriteClick(props.recipe);
         }}
       />
+
     </>
   );
 };
