@@ -36,7 +36,7 @@ class Searchbar extends React.Component {
                     value={this.state.ingredient}
                 />
 
-                <button type="submit" value="Search">Search</button>
+                <button type="submit" value="search" className="search-button">Search</button>
             </form>
         )
     }

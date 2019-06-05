@@ -17,3 +17,16 @@ form {
 outline-style: none;
 background-color: #ffffff;
 }
+
+.search-button{
+	  background-color: #FF665A; /* coral */
+	  border: none;
+	  border-radius: 5px;
+	  color: #FFFFFF;
+	  padding: 15px 30px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 20px;
+	}
