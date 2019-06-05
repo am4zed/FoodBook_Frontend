@@ -1,17 +1,12 @@
 .recipe-card {
-  width: 100%;
+  display: grid;
+  grid-template-areas: 
+  "img"
+  "label";
+  grid-template-columns: 300px;
+  grid-template-rows: auto;
+  text-align: center;
 }
 
-.recipe-card h1 {
-  border-top: solid #a3a1a8;
-  border-top-width: thin;
-  width: 50%;
-  margin: 0 auto;
-  padding-top: 10px;
-  font-size: 24px;
-}
-.recipe-card img {
-  padding-bottom: 20px;
-}
 /* recipe-card h1 {
   border-top: 1px solid #ff655a; */
