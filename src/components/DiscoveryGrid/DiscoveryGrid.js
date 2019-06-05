@@ -1,5 +1,6 @@
 import React from "react";
 import RecipeCard from "../RecipeCard/RecipeCard";
+import './dicoverygrid.css'
 
 const DiscoveryGrid = props => {
   if (!props.hits) return <></>;
