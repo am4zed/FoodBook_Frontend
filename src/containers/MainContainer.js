@@ -48,29 +48,6 @@ class MainContainer extends React.Component {
         this.props.history.push(`/recipe/${recipe.uri}`);
     }
 
-    handleFavouriteClick(recipe) {
-        const { auth } = this.props;
-        if (!auth.isAuthenticated()) return;
-        const recipeData = {
-            recipeUri: recipe.uri,
-            name: recipe.label,
-            user: this.state.user._links.user.href
-        }
-        fetch(`http://localhost:8080/favouriteRecipes/`, {
-            mode: "cors", // no-cors, cors, *same-origin
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "http://localhost:3000"
-            },
-            body: JSON.stringify(recipeData)
-        })
-            .then((res) => res.json())
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err))
-
-    }
-
     async componentDidMount() {
         if (this.props.location.pathname === "/callback")
             this.setState({ validatingSession: false });
@@ -111,21 +88,88 @@ class MainContainer extends React.Component {
             .then((res) => res.json())
             .then((res) => {
                 this.setState({ user: res })
-                fetch(`http://localhost:8080/users/${profile.sub}/favourite-recipes`, {
-                    mode: "cors", // no-cors, cors, *same-origin
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "http://localhost:3000"
-                    }
-                })
-                    .then((res) => res.json())
-                    .then((res) => {
-                        this.setState({ favourites: res.user.favouriteRecipes.map((recipe) => recipe.recipeUri) })
-                    }).catch((err) => {
-
-                    })
+                this.getFavouriteRecipes()
             })
             .catch((err) => console.log(err));
+    }
+
+    getFavouriteRecipes = () => {
+        fetch(`http://localhost:8080/users/${this.props.auth.getProfile().sub}/favourite-recipes`, {
+            mode: "cors", // no-cors, cors, *same-origin
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000"
+            }
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ favourites: res.user.favouriteRecipes })
+                console.log(res);
+
+            }).catch((err) => {
+
+            })
+    }
+
+    handleFavouriteClick(recipe) {
+        const { auth } = this.props;
+        if (!auth.isAuthenticated()) return;
+        const { favourites } = this.state;
+        let toDelete = null;
+        for (let x = 0; x < favourites.length; x++)
+            if (recipe.uri === favourites[x].recipeUri)
+                toDelete = favourites[x];
+
+        const uris = this.state.favourites.map((fav) => fav.recipeUri);
+        if (toDelete) this.deleteFavouriteRecipe(toDelete);
+        else this.addFavouriteRecipe(recipe);
+
+    }
+
+    deleteFavouriteRecipe = (recipe) => {
+        console.log("delete recipe", recipe);
+        fetch(`http://localhost:8080/favorite-recipes/delete/${recipe.id}`, {
+            mode: "cors", // no-cors, cors, *same-origin
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000"
+            }
+        })
+            .then(() => {
+                const favs = this.state.favourites.filter((fav) => {
+                    return fav.recipeUri === recipe.uri
+                })
+                this.setState({ favourites: favs })
+            })
+            .catch((err) => console.log(err))
+
+    }
+
+    addFavouriteRecipe = (recipe) => {
+        console.log("add recipe");
+
+        const recipeData = {
+            recipeUri: recipe.uri,
+            name: recipe.label,
+            user: this.state.user._links.user.href
+        }
+        fetch(`http://localhost:8080/favouriteRecipes/`, {
+            mode: "cors", // no-cors, cors, *same-origin
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000"
+            },
+            body: JSON.stringify(recipeData)
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                const favs = [...this.state.favourites];
+                favs.push(res);
+                this.setState({ favourites: favs })
+            })
+            .catch((err) => console.log(err))
     }
 
     render() {

@@ -14,7 +14,6 @@ const RecipeInformation = props => {
   });
 
   const onFavouriteClick = () => {
-    if (props.favourites.includes(currentRecipe.uri)) return;
     props.onFavouriteClick(currentRecipe);
   }
 
