@@ -15,7 +15,7 @@ const Recipe = props => {
       </h4>
 
       <div className="ingridients-container">
-        <h6 id="ingridients">Ingredients : </h6>
+        <h6 id="ingridients">Ingredients </h6>
 
         <ul id="ingridient-list">{ingredientsList}</ul>
 

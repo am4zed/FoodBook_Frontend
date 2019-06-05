@@ -5,3 +5,7 @@
 .recipe-title {
   color: #ff8c64;
 }
+
+#ingridients {
+  text-decoration: underline;
+}
