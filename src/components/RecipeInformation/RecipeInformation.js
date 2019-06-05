@@ -4,6 +4,7 @@ import Calories from "../Calories/Calories";
 import PrepTime from "../PrepTime/PrepTime";
 import Button from "../Button/Button";
 import RecipeHealthLabel from "../RecipeHealthLabel/RecipeHealthLabel";
+import "./recipeinformation.css";
 
 const RecipeInformation = props => {
   const { currentRecipe } = props;
