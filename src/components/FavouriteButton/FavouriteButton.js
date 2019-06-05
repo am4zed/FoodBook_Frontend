@@ -11,7 +11,7 @@ const FavouriteButton = props => {
           props.onFavouriteClick(props.recipe);
         }}
       />
-      <img src ="img/heart-icon.png"/>
+
     </>
   );
 };

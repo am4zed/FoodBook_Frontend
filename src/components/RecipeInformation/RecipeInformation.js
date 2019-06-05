@@ -22,7 +22,7 @@ const RecipeInformation = props => {
 
       <ul>{healthLabels}</ul>
 
-      <Button className="favourite" value={"<3"} onCLick={props.onClick} />
+      <Button className="favourite" onCLick={props.onClick} />
 
     </div>
   );
