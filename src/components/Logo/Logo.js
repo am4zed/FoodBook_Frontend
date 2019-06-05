@@ -3,7 +3,9 @@ import "./logo.css";
 
 const Logo = () => (
   <div className="logoDiv">
-    <img className="logo" src="img/FoodBookLogo.svg" alt="foodbook logo" />
+    <a href="/">
+      <img className="logo" src="img/FoodBookLogo.svg" alt="foodbook logo" />{" "}
+    </a>
   </div>
 );
 
