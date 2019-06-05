@@ -21,6 +21,7 @@ class MainContainer extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onRecipeCardClick = this.onRecipeCardClick.bind(this);
+    this.handleFavouriteClick = this.handleFavouriteClick.bind(this);
   }
 
   handleSubmit(query) {
@@ -41,6 +42,10 @@ class MainContainer extends React.Component {
   onRecipeCardClick(recipe) {
     this.setState({ currentRecipe: recipe });
     this.props.history.push(`/recipe/${recipe.uri}`);
+  }
+
+  handleFavouriteClick(recipe) {
+    console.log(recipe.label);
   }
 
   async componentDidMount() {
@@ -73,6 +78,7 @@ class MainContainer extends React.Component {
               onSubmit={this.handleSubmit}
               hits={result.hits}
               onClick={this.onRecipeCardClick}
+              onFavouriteClick={this.handleFavouriteClick}
             />
           )}
         />
