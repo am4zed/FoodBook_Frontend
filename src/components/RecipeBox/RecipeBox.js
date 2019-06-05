@@ -14,7 +14,6 @@ const RecipeBox = props => {
         favourites={props.favourites}
         onFavouriteClick={props.onFavouriteClick}
       />
-
     </div>
   );
 };

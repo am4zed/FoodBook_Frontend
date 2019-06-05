@@ -2,14 +2,16 @@
   width: 100%;
 }
 
-.recipe-card h1{
+.recipe-card h1 {
   border-top: solid #a3a1a8;
   border-top-width: thin;
   width: 50%;
   margin: 0 auto;
   padding-top: 10px;
-  font-size: 24px
+  font-size: 24px;
 }
-.recipe-card img{
+.recipe-card img {
   padding-bottom: 20px;
 }
+/* recipe-card h1 {
+  border-top: 1px solid #ff655a; */

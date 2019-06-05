@@ -12,7 +12,7 @@ const FavouriteButton = props => {
           props.onClick(props.recipe);
         }}
       >
-        <img className="favourite" src="../img/heart-icon.png" />
+        <img src="../img/heart-icon.png" />
       </Button>
     </>
   );

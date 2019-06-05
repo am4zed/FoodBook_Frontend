@@ -1,5 +1,9 @@
 .recipe-information {
-  padding: 30em;
+  padding: 2em;
+}
+.labels {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .favourite {
