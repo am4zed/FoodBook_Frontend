@@ -1,12 +1,11 @@
 .favourite {
-    border: 1px solid #FF665A;
-    border-radius: 100%;
-    padding: 3px;
-    border-style: none;
-    background: rgb(236, 236, 236);
-  }
+  border: 1px solid #ff665a;
+  border-radius: 100%;
+  padding: 3px;
+  border-style: none;
+  background: rgb(236, 236, 236);
+}
 
-  .favourite:hover {
-    background: rgb(218, 217, 217);
-
-  }
+.favourite:hover {
+  background: rgb(218, 217, 217);
+}
