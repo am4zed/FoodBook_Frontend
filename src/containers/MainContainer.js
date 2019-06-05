@@ -112,7 +112,8 @@ class MainContainer extends React.Component {
     }
 
     noCurrentRecipeFallback = (uri) => {
-        console.log("fallback", uri);
+        const truncated = uri.replace("http://www.edamam.com/ontologies/edamam.owl", "");
+        this.props.history.push("/")
 
     }
 
