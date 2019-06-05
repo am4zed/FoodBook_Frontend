@@ -12,7 +12,8 @@ const RecipeInformation = props => {
 
   return (
     <div className="recipe-information">
-      <RecipeImage recipeImageUrl={currentRecipe.image} />
+
+      <RecipeImage recipeImageUrl ={currentRecipe.image}/>
 
       <Calories calories={currentRecipe.calories} />
 
