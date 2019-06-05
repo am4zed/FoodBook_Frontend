@@ -2,7 +2,12 @@ import React from "react";
 // import "./recipeCard.css";
 import RecipeImage from "../RecipeImage/RecipeImage";
 import RecipeLabel from "../RecipeLabel/RecipeLabel";
+<<<<<<< HEAD
 import FavouriteButton from "../FavouriteButton/FavouriteButton";
+=======
+import './recipeCard.css'
+
+>>>>>>> feature/recipegrid
 const RecipeCard = props => {
   return (
     <div className="recipe-card" onClick={() => props.onClick(props.recipe)}>
