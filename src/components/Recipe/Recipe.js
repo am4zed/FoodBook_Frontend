@@ -9,13 +9,21 @@ const Recipe = props => {
     return <Ingredient line={line} />;
   });
   return (
-    <>
-      <RecipeLabel />
-      <h2>Ingredients : </h2>
-      <ul>{ingredientsList}</ul>
-      <h2>Methods :</h2>
-      <Method />
-    </>
+    <div className="recipe-container">
+      <h4 className="recipe-title">
+        <RecipeLabel label={props.currentRecipe.label} />
+      </h4>
+
+      <div className="ingridients-container">
+        <h6 id="ingridients">Ingredients : </h6>
+
+        <ul id="ingridient-list">{ingredientsList}</ul>
+
+        <h6>
+          Methods : <Method url={props.currentRecipe.url} />
+        </h6>
+      </div>
+    </div>
   );
 };
 export default Recipe;

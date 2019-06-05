@@ -13,8 +13,11 @@ const RecipeInformation = props => {
   return (
     <div className="recipe-information">
       <RecipeImage recipeImageUrl={currentRecipe.image} />
+
       <Calories calories={currentRecipe.calories} />
+
       <PrepTime totalTime={currentRecipe.totalTime} />
+
       <ul>{healthLabels}</ul>
     </div>
   );
