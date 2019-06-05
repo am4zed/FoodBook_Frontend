@@ -1,3 +1,7 @@
 .recipe-information {
   padding: 30em;
 }
+button favourite {
+  border: 1px solid #FF665A;
+  border-radius: 30px;
+}
