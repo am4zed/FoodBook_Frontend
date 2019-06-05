@@ -2,6 +2,7 @@ import React from "react";
 import RecipeImage from "../RecipeImage/RecipeImage";
 import Calories from "../Calories/Calories";
 import PrepTime from "../PrepTime/PrepTime";
+import Button from "../Button/Button";
 import RecipeHealthLabel from "../RecipeHealthLabel/RecipeHealthLabel";
 
 const RecipeInformation = props => {
@@ -20,6 +21,9 @@ const RecipeInformation = props => {
       <PrepTime totalTime={currentRecipe.totalTime} />
 
       <ul>{healthLabels}</ul>
+
+      <Button className="favourite" value={"<3"} onCLick={props.onClick} />
+
     </div>
   );
 };

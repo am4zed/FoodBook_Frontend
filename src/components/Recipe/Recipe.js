@@ -15,13 +15,13 @@ const Recipe = props => {
       </h4>
 
       <div className="ingridients-container">
-        <h6 id="ingridients">Ingredients </h6>
+        <h4 id="ingridients">Ingredients </h4>
 
         <ul id="ingridient-list">{ingredientsList}</ul>
 
-        <h6>
+        <h4>
           Methods : <Method url={props.currentRecipe.url} />
-        </h6>
+        </h4>
       </div>
     </div>
   );
