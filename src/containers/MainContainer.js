@@ -18,7 +18,9 @@ class MainContainer extends React.Component {
         this.state = {
             validatingSession: true,
             currentRecipe: null,
-            result: []
+            user: null,
+            result: [],
+            favourites: []
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onRecipeCardClick = this.onRecipeCardClick.bind(this);
@@ -49,34 +51,24 @@ class MainContainer extends React.Component {
     handleFavouriteClick(recipe) {
         const { auth } = this.props;
         if (!auth.isAuthenticated()) return;
-        fetch(`http://localhost:8080/users/${auth.getProfile().sub}`, {
+        const recipeData = {
+            recipeUri: recipe.uri,
+            name: recipe.label,
+            user: this.state.user._links.user.href
+        }
+        fetch(`http://localhost:8080/favouriteRecipes/`, {
             mode: "cors", // no-cors, cors, *same-origin
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "http://localhost:3000"
-            }
-        }).then((res) => {
-            return res.json();
-        }).then((res) => {
-            console.log(res);
-            const recipeData = {
-                recipeUri: recipe.uri,
-                name: recipe.label,
-                user: res._links.user.href
-            }
-            fetch(`http://localhost:8080/favouriteRecipes/`, {
-                mode: "cors", // no-cors, cors, *same-origin
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "http://localhost:3000"
-                },
-                body: JSON.stringify(recipeData)
-            }).then((res) => res.json())
-                .then((res) => console.log(res))
-        }).catch((err) => {
-            console.log(err);
+            },
+            body: JSON.stringify(recipeData)
         })
+            .then((res) => res.json())
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
+
     }
 
     async componentDidMount() {
@@ -116,7 +108,23 @@ class MainContainer extends React.Component {
             },
             body: JSON.stringify(userData)
         })
-            .then((res) => console.log(res))
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ user: res })
+                fetch(`http://localhost:8080/users/${profile.sub}/favourite-recipes`, {
+                    mode: "cors", // no-cors, cors, *same-origin
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "http://localhost:3000"
+                    }
+                })
+                    .then((res) => res.json())
+                    .then((res) => {
+                        this.setState({ favourites: res.user.favouriteRecipes.map((recipe) => recipe.recipeUri) })
+                    }).catch((err) => {
+
+                    })
+            })
             .catch((err) => console.log(err));
     }
 
