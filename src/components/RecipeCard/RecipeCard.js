@@ -10,10 +10,6 @@ const RecipeCard = props => {
     <div className="recipe-card" onClick={() => props.onClick(props.recipe)}>
       <RecipeImage recipeImageUrl={props.recipe.image} />
       <RecipeLabel label={props.recipe.label} />
-      <FavouriteButton
-        onFavouriteClick={props.onFavouriteClick}
-        recipe={props.recipe}
-      />
     </div>
   );
 };
