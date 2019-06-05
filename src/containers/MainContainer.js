@@ -23,6 +23,7 @@ class MainContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onRecipeCardClick = this.onRecipeCardClick.bind(this);
         this.handleFavouriteClick = this.handleFavouriteClick.bind(this);
+        this.syncUserWithDatabase = this.syncUserWithDatabase.bind(this);
     }
 
     handleSubmit(query) {
@@ -55,23 +56,26 @@ class MainContainer extends React.Component {
                 "Access-Control-Allow-Origin": "http://localhost:3000"
             }
         }).then((res) => {
-            if (res.status === "404") {
-                const profile = auth.getProfile();
-                const userData = {
-                    firstName: profile.given_name,
-                    lastname: profile.family_name,
-                    id: profile.sub
-                }
-                fetch("http://localhost:8080/users/", {
-                    mode: "cors", // no-cors, cors, *same-origin
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "http://localhost:3000"
-                    },
-                    body: JSON.stringify(userData)
-                })
+            return res.json();
+        }).then((res) => {
+            console.log(res);
+            const recipeData = {
+                recipeUri: recipe.uri,
+                name: recipe.label,
+                user: res._links.user.href
             }
+            fetch(`http://localhost:8080/favouriteRecipes/`, {
+                mode: "cors", // no-cors, cors, *same-origin
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "http://localhost:3000"
+                },
+                body: JSON.stringify(recipeData)
+            }).then((res) => res.json())
+                .then((res) => console.log(res))
+        }).catch((err) => {
+            console.log(err);
         })
     }
 
@@ -81,7 +85,7 @@ class MainContainer extends React.Component {
         try {
             await this.props.auth.silentAuth()
                 .then(() => {
-
+                    this.syncUserWithDatabase();
                 });
             this.forceUpdate(); // Make sure to force a rerender, incase you're wondering what this does
         } catch (err) {
@@ -90,9 +94,36 @@ class MainContainer extends React.Component {
         this.setState({ validatingSession: false });
     }
 
+    logout = () => {
+        this.props.auth.logout();
+        this.forceUpdate();
+    }
+
+    async syncUserWithDatabase() {
+        const { auth } = this.props;
+        const profile = auth.getProfile();
+        const userData = {
+            firstName: profile.given_name,
+            lastName: profile.family_name,
+            id: profile.sub
+        }
+        await fetch("http://localhost:8080/users/", {
+            mode: "cors", // no-cors, cors, *same-origin
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000"
+            },
+            body: JSON.stringify(userData)
+        })
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
+    }
+
     render() {
         const { result, currentRecipe } = this.state;
-
+        const { auth } = this.props;
+        const buttonValue = auth.isAuthenticated() ? "Logout" : "Login"
         return (
             <>
                 <Header />
@@ -116,7 +147,7 @@ class MainContainer extends React.Component {
                     path="/recipe/:id"
                     render={() => <RecipeBox currentRecipe={currentRecipe} />}
                 />
-                <Button value="LOGIN" onClick={this.props.auth.login} />
+                <Button value={buttonValue} onClick={auth.isAuthenticated() ? this.logout : auth.login} />
             </>
         );
     }
