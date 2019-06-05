@@ -12,12 +12,9 @@ const RecipeInformation = props => {
 
   return (
     <div className="recipe-information">
-<<<<<<< HEAD
-      <RecipeImage recipeImageUrl={currentRecipe.image} />
 
-=======
       <RecipeImage recipeImageUrl ={currentRecipe.image}/>
->>>>>>> feature/recipegrid
+
       <Calories calories={currentRecipe.calories} />
 
       <PrepTime totalTime={currentRecipe.totalTime} />
