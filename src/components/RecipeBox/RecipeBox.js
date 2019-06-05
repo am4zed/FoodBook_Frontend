@@ -13,6 +13,7 @@ const RecipeBox = props => {
         currentRecipe={props.currentRecipe}
         favourites={props.favourites}
         onFavouriteClick={props.onFavouriteClick}
+        auth={props.auth}
       />
     </div>
   );

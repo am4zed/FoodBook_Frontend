@@ -17,14 +17,18 @@ const RecipeInformation = props => {
     props.onFavouriteClick(currentRecipe);
   }
 
+  const renderFavouriteIfPossible = () => {
+    if (props.auth.isAuthenticated()) return <FavouriteButton onClick={() => onFavouriteClick()} />
+    return <h4 className="favourite">Please login to favourite this recipe!</h4>
+  }
+
   return (
     <div className="recipe-information">
       <RecipeImage recipeImageUrl={currentRecipe.image} />
       <Calories calories={currentRecipe.calories} />
       <PrepTime totalTime={currentRecipe.totalTime} />
       <div className="labels">{healthLabels}</div>
-      <FavouriteButton onClick={() => onFavouriteClick()} />
-
+      {renderFavouriteIfPossible()}
     </div>
   );
 };

@@ -196,7 +196,7 @@ class MainContainer extends React.Component {
                 />
                 <Route
                     path="/recipe/:id"
-                    render={() => <RecipeBox currentRecipe={currentRecipe} favourites={favourites} onFavouriteClick={this.handleFavouriteClick} />}
+                    render={() => <RecipeBox auth={auth} currentRecipe={currentRecipe} favourites={favourites} onFavouriteClick={this.handleFavouriteClick} />}
                 />
             </>
         );
