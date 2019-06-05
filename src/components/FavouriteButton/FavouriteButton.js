@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../Button/Button";
+import "./style.css"
 
 const FavouriteButton = props => {
   return (
@@ -8,10 +9,11 @@ const FavouriteButton = props => {
         className="favourite"
         value=""
         onClick={() => {
-          props.onFavouriteClick(props.recipe);
+          props.onClick(props.recipe);
         }}
-      />
-
+      >
+        <img className="favourite" src="../img/heart-icon.png" />
+      </Button>
     </>
   );
 };

@@ -9,7 +9,7 @@ const Button = props => {
   return (
     <button className={className} value={value} onClick={evt => onClick(evt)}>
       {value}
-      <img  className="favButton" src="../img/heart-icon.png"/>
+      {props.children}
     </button>
   );
 };

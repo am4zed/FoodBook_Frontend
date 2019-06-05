@@ -12,7 +12,7 @@ class Searchbar extends React.Component {
     onSubmit = (evt) => {
         evt.preventDefault()
         this.props.onSubmit(this.state.value);
-        this.setState({value: ""})
+        this.setState({ value: "" })
 
 
     };
@@ -27,7 +27,7 @@ class Searchbar extends React.Component {
         return (
             //Searchbar
             <form className="recipe-search" onSubmit={(evt) => this.onSubmit(evt)}>
-                <h3>Search for recipes that include your ingredient.</h3>
+                <h3>Discover.</h3>
                 <input
                     id="input-ingredient"
                     name="input-ingredient"
@@ -36,7 +36,6 @@ class Searchbar extends React.Component {
                     value={this.state.ingredient}
                 />
 
-                <button type="submit" value="search" className="search-button">Search</button>
             </form>
         )
     }

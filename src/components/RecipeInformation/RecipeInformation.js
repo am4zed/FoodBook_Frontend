@@ -4,6 +4,7 @@ import Calories from "../Calories/Calories";
 import PrepTime from "../PrepTime/PrepTime";
 import Button from "../Button/Button";
 import RecipeHealthLabel from "../RecipeHealthLabel/RecipeHealthLabel";
+import FavouriteButton from "../FavouriteButton/FavouriteButton"
 
 const RecipeInformation = props => {
   const { currentRecipe } = props;
@@ -27,7 +28,7 @@ const RecipeInformation = props => {
 
       <ul>{healthLabels}</ul>
 
-      <Button className="favourite" onClick={() => onFavouriteClick()} />
+      <FavouriteButton onClick={() => onFavouriteClick()} />
 
     </div>
   );

@@ -131,10 +131,9 @@ class MainContainer extends React.Component {
     render() {
         const { result, currentRecipe, favourites } = this.state;
         const { auth } = this.props;
-        const buttonValue = auth.isAuthenticated() ? "Logout" : "Login"
         return (
             <>
-                <Header />
+                <Header auth={this.props.auth} logout={this.logout} />
                 <Route
                     path="/callback"
                     render={() => <Callback auth={this.props.auth} />}
@@ -155,7 +154,6 @@ class MainContainer extends React.Component {
                     path="/recipe/:id"
                     render={() => <RecipeBox currentRecipe={currentRecipe} favourites={favourites} onFavouriteClick={this.handleFavouriteClick} />}
                 />
-                <Button value={buttonValue} onClick={auth.isAuthenticated() ? this.logout : auth.login} />
             </>
         );
     }

@@ -13,11 +13,18 @@
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin: 3px 3px 3px 3px;
+    min-width: 150px;
 }
 
 .my_recipes_button:hover {
     background-color: #f54235; /* dark coral */
   }
+
+.login-area {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+

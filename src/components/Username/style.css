@@ -1,0 +1,11 @@
+
+
+.username {
+    font-family: "Abel";
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-size: 1.4rem;
+    padding-right: 5px;
+}
