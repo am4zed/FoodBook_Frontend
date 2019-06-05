@@ -129,7 +129,7 @@ class MainContainer extends React.Component {
     }
 
     render() {
-        const { result, currentRecipe } = this.state;
+        const { result, currentRecipe, favourites } = this.state;
         const { auth } = this.props;
         const buttonValue = auth.isAuthenticated() ? "Logout" : "Login"
         return (
@@ -153,7 +153,7 @@ class MainContainer extends React.Component {
                 />
                 <Route
                     path="/recipe/:id"
-                    render={() => <RecipeBox currentRecipe={currentRecipe} />}
+                    render={() => <RecipeBox currentRecipe={currentRecipe} favourites={favourites} />}
                 />
                 <Button value={buttonValue} onClick={auth.isAuthenticated() ? this.logout : auth.login} />
             </>
