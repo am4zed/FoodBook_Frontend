@@ -56,6 +56,7 @@ class Auth {
   logout = () => {
     this.idToken = null;
     this.expiresAt = null;
+    this.auth0.logout();
   };
 
   setSession = authResult => {

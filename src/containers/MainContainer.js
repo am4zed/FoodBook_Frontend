@@ -63,11 +63,6 @@ class MainContainer extends React.Component {
         this.setState({ validatingSession: false });
     }
 
-    logout = () => {
-        this.props.auth.logout();
-        this.forceUpdate();
-    }
-
     async syncUserWithDatabase() {
         const { auth } = this.props;
         const profile = auth.getProfile();
@@ -183,7 +178,7 @@ class MainContainer extends React.Component {
         const { auth } = this.props;
         return (
             <>
-                <Header auth={this.props.auth} logout={this.logout} />
+                <Header auth={this.props.auth} logout={this.props.auth.logout} />
                 <Route
                     path="/callback"
                     render={() => <Callback auth={this.props.auth} />}
