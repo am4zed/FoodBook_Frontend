@@ -45,7 +45,7 @@ class MainContainer extends React.Component {
 
     onRecipeCardClick(recipe) {
         this.setState({ currentRecipe: recipe });
-        this.props.history.push(`/recipe/${recipe.uri}`);
+        this.props.history.push(`/recipe?id=${recipe.uri}`);
     }
 
     async componentDidMount() {
@@ -109,6 +109,11 @@ class MainContainer extends React.Component {
             }).catch((err) => {
 
             })
+    }
+
+    noCurrentRecipeFallback = (uri) => {
+        console.log("fallback", uri);
+
     }
 
     handleFavouriteClick(recipe) {
@@ -195,8 +200,13 @@ class MainContainer extends React.Component {
                     )}
                 />
                 <Route
-                    path="/recipe/:id"
-                    render={() => <RecipeBox auth={auth} currentRecipe={currentRecipe} favourites={favourites} onFavouriteClick={this.handleFavouriteClick} />}
+                    path="/recipe"
+                    render={() => <RecipeBox
+                        auth={auth}
+                        currentRecipe={currentRecipe}
+                        favourites={favourites}
+                        onFavouriteClick={this.handleFavouriteClick}
+                        noCurrentRecipeFallback={this.noCurrentRecipeFallback} />}
                 />
             </>
         );
