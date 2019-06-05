@@ -153,7 +153,7 @@ class MainContainer extends React.Component {
                 />
                 <Route
                     path="/recipe/:id"
-                    render={() => <RecipeBox currentRecipe={currentRecipe} favourites={favourites} />}
+                    render={() => <RecipeBox currentRecipe={currentRecipe} favourites={favourites} onFavouriteClick={this.handleFavouriteClick} />}
                 />
                 <Button value={buttonValue} onClick={auth.isAuthenticated() ? this.logout : auth.login} />
             </>

@@ -11,6 +11,8 @@ const RecipeBox = props => {
       <RecipeInformation
         className="recipe-info"
         currentRecipe={props.currentRecipe}
+        favourites={props.favourites}
+        onFavouriteClick={props.onFavouriteClick}
       />
 
     </div>

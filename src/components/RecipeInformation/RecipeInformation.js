@@ -11,10 +11,15 @@ const RecipeInformation = props => {
     return <RecipeHealthLabel healthLabel={label} />;
   });
 
+  const onFavouriteClick = () => {
+    if (props.favourites.includes(currentRecipe.uri)) return;
+    props.onFavouriteClick(currentRecipe);
+  }
+
   return (
     <div className="recipe-information">
 
-      <RecipeImage recipeImageUrl ={currentRecipe.image}/>
+      <RecipeImage recipeImageUrl={currentRecipe.image} />
 
       <Calories calories={currentRecipe.calories} />
 
@@ -22,7 +27,7 @@ const RecipeInformation = props => {
 
       <ul>{healthLabels}</ul>
 
-      <Button className="favourite" onCLick={props.onClick} />
+      <Button className="favourite" onClick={() => onFavouriteClick()} />
 
     </div>
   );

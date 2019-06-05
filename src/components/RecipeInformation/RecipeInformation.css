@@ -1,7 +1,8 @@
 .recipe-information {
   padding: 30em;
 }
-button favourite {
+
+.favourite {
   border: 1px solid #FF665A;
   border-radius: 30px;
 }
