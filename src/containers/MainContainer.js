@@ -20,7 +20,8 @@ class MainContainer extends React.Component {
             currentRecipe: null,
             user: null,
             result: [],
-            favourites: []
+            favourites: [],
+            searching: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onRecipeCardClick = this.onRecipeCardClick.bind(this);
@@ -29,6 +30,7 @@ class MainContainer extends React.Component {
     }
 
     handleSubmit(query) {
+        this.setState({ searching: true })
         fetch(`http://localhost:8080/api/search/${query}`, {
             mode: "cors", // no-cors, cors, *same-origin
             headers: {
@@ -39,7 +41,7 @@ class MainContainer extends React.Component {
             .then(res => {
                 return res.json();
             })
-            .then(res => this.setState({ result: res }))
+            .then(res => this.setState({ result: res, searching: false }))
             .catch(err => console.log(err));
     }
 
@@ -192,6 +194,7 @@ class MainContainer extends React.Component {
                             hits={result.hits}
                             onClick={this.onRecipeCardClick}
                             onFavouriteClick={this.handleFavouriteClick}
+                            searching={this.state.searching}
                         />
                     )}
                 />

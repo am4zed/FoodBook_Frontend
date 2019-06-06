@@ -9,7 +9,11 @@
   }
 
   .favourite:hover {
-      transition: transform 0.25s ease-in-out;
+    transition: transform 0.25s ease-in-out;
     transform: scale(1.025);
 
+  }
+
+  .favourite:active {
+    background: rgb(236, 236, 236);
   }
