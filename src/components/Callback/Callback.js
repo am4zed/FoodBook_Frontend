@@ -7,7 +7,7 @@ const Callback = (props) => {
   }).catch(() => {
     return <div>Error logging in!</div>
   });
-  return <div>Style me!</div>;
+  return <div>Validating Session...</div>;
 }
 
 

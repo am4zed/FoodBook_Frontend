@@ -6,6 +6,8 @@
   grid-template-columns: 300px;
   grid-template-rows: auto;
   text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 /* recipe-card h1 {

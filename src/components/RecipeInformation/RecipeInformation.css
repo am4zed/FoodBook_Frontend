@@ -7,7 +7,8 @@
   "calories"
   "prepTime"
   "labels"
-  "fav";
+  "fav"
+  "isfav";
   grid-auto-columns: auto;
   grid-auto-rows: auto;
   grid-gap: 15px;
@@ -25,4 +26,11 @@
   grid-area: fav;
   border: 1px solid #FF665A;
   border-radius: 30px;
+}
+
+.is-favourited {
+  grid-area: isfav;
+  font-family: "Abel";
+  font-size: 1.35rem;
+  text-align: center;
 }

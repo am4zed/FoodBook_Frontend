@@ -9,6 +9,8 @@ import "./RecipeInformation.css";
 
 const RecipeInformation = props => {
   const { currentRecipe } = props;
+  const uris = props.favourites.map((fav) => fav.recipeUri);
+  console.log(currentRecipe);
   const healthLabels = currentRecipe.healthLabels.map(label => {
     return <RecipeHealthLabel healthLabel={label} />;
   });
@@ -19,7 +21,10 @@ const RecipeInformation = props => {
 
   const renderFavouriteIfPossible = () => {
     if (props.auth.isAuthenticated()) return <FavouriteButton onClick={() => onFavouriteClick()} />
-    return <h4 className="favourite">Please login to favourite this recipe!</h4>
+    return (
+      <div>
+        <h4 className="favourite">Please login to favourite this recipe!</h4>
+      </div>)
   }
 
   return (
@@ -29,6 +34,7 @@ const RecipeInformation = props => {
       <PrepTime totalTime={currentRecipe.totalTime} />
       <div className="labels">{healthLabels}</div>
       {renderFavouriteIfPossible()}
+      {uris.includes(currentRecipe.uri) ? <p className="is-favourited">Favourited</p> : <p></p>}
     </div>
   );
 };
