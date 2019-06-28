@@ -14,7 +14,8 @@ Create a recipe finder where users can:
 
 
 
-### Additional features implemented
+### Additional Features Implemented
+---
 
 User can: 
 
@@ -26,7 +27,8 @@ User can:
 
 
 
-#### Possible additional features
+### Possible Additional Features
+---
 
 - Search a wider library of recipes from an API
 
