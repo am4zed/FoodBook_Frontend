@@ -4,42 +4,35 @@
 ### MVP
 ---
 
-
-
-
-#### Create a recipe finder where users can:
+Create a recipe finder where users can:
 
 
 - Search for recipes filtering by ingredients
 
 - View recipe image, ingredients and method
 
-- Add own recipes
+
+
+
+### Additional features implemented
+
+User can: 
+
+- Login using Auth0
+
+- Search by dietary requirements ( gluten-free, vegetarian, vegan - icons)
 
 - Save favourite recipes
 
 
 
-### Extensions
----
-
-
-
-#### User can:
+#### Possible additional features
 
 - Search a wider library of recipes from an API
 
-- Filter recipe search by: 
+- Add own recipes
 
-- Cooking time
-
-- Difficulty level
-
-- Dietary requirements ( gluten-free, vegetarian, vegan - icons)
-
-- Serves
-
-#### Login using Auth0
+- Filter recipe search by: cooking time / difficulty level / serves
 
 - View recipe reviews and add own recipe reviews
 
