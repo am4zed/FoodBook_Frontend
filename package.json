@@ -5,7 +5,7 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "auth0-js": "^9.10.4",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "http-proxy-middleware": "^0.19.1",
     "query-string": "^6.6.0",
     "react": "^16.8.6",
